@@ -2,7 +2,7 @@
 
 namespace Common.Interfaces
 {
-    interface IRunner
+   public interface IRunner
     {
         IRunnerResult Run(IDefinitionItem definitionItem, List<IConfigItem> configItems);
     }

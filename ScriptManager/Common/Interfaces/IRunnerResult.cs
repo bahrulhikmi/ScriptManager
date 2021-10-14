@@ -1,6 +1,6 @@
 ﻿namespace Common.Interfaces
 {
-    interface IRunnerResult
+    public interface IRunnerResult
     {
         bool Success { get; set; }
     }

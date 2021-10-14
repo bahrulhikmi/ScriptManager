@@ -2,7 +2,7 @@
 
 namespace Common.Interfaces
 {
-    interface IConfigReader
+    public interface IConfigReader
     {
         List<IConfigItem> Read();
     }
