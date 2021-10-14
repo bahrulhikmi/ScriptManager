@@ -2,7 +2,7 @@
 
 namespace Common.Interfaces
 {
-    interface IDefinitionReader
+   public interface IDefinitionReader
     {
         List<IDefinitionItem> Read();
     }
