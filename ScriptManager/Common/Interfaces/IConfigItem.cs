@@ -1,6 +1,6 @@
 ﻿namespace Common.Interfaces
 {
-    public interface IConfigItem
+   public interface IConfigItem
     {
         string ConfigKey { get; set; }
         string Value { get; set; }
