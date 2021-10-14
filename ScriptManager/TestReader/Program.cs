@@ -8,11 +8,13 @@ namespace TestReader
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            ConfigReader reader = new ConfigReader();
+            //ConfigReader reader = new ConfigReader();
+            
+            DefinitionReader reader = new DefinitionReader();
             var x = reader.Read();
             foreach(var a in x)
             {
-                Console.WriteLine(a.ConfigKey + " " + a.Value);
+                Console.WriteLine(a.Name + " " + a.IconPath + " " + a.Label + " " + a.Category + " " + a.ScriptFileName);
             }
             Console.ReadLine();
         }
