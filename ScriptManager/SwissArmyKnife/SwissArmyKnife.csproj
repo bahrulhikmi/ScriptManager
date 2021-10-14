@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ConfigItem.cs" />
+    <Compile Include="Classes\DefinitionItem.cs" />
+    <Compile Include="Classes\ExeRunner.cs" />
+    <Compile Include="Classes\RunnerResult.cs" />
     <Compile Include="FrmConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +94,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Icons\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{100a9292-7845-46d3-b0d9-c64fb405ff7f}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
