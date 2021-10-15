@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Common.Interfaces;
 
-namespace SwissArmyKnife.Classes
+namespace Runner.Classes
 {
     public class ConfigItem : IConfigItem
     {
