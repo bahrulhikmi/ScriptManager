@@ -41,9 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\BatRunner.cs" />
     <Compile Include="Classes\ConfigItem.cs" />
     <Compile Include="Classes\DefinitionItem.cs" />
     <Compile Include="Classes\ExeRunner.cs" />
+    <Compile Include="Classes\PythonRunner.cs" />
     <Compile Include="Classes\RunnerResult.cs" />
     <Compile Include="Classes\WinScriptRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
