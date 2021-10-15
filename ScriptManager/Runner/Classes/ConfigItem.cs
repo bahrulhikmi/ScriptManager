@@ -7,7 +7,7 @@ using Common.Interfaces;
 
 namespace SwissArmyKnife.Classes
 {
-    class ConfigItem : IConfigItem
+    public class ConfigItem : IConfigItem
     {
         public string ConfigKey { get; set; }
         public string Value { get; set; }

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Common.Interfaces;
 
-namespace SwissArmyKnife.Classes
+namespace Runner.Classes
 {
-    class RunnerResult : IRunnerResult
+    public class RunnerResult : IRunnerResult
     {
         public bool Success { get; set; }
     }

@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Common.Interfaces;
 
-namespace SwissArmyKnife.Classes
+namespace Runner.Classes
 {
-    internal class ExeRunner : IRunner
+    public class ExeRunner : IRunner
     {
         public IRunnerResult Run(IDefinitionItem definitionItem, List<IConfigItem> configItems)
         {
