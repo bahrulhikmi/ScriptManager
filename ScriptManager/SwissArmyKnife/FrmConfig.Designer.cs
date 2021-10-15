@@ -30,19 +30,21 @@ namespace SwissArmyKnife
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConfig));
-            this.propertyGrid = new System.Windows.Forms.PropertyGrid();
+            this.propertyGridASK = new System.Windows.Forms.PropertyGrid();
             this.btnOK = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // propertyGrid
+            // propertyGridASK
             // 
-            this.propertyGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.propertyGridASK.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.propertyGrid.Location = new System.Drawing.Point(12, 12);
-            this.propertyGrid.Name = "propertyGrid";
-            this.propertyGrid.Size = new System.Drawing.Size(427, 426);
-            this.propertyGrid.TabIndex = 0;
+            this.propertyGridASK.HelpBackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.propertyGridASK.HelpVisible = false;
+            this.propertyGridASK.Location = new System.Drawing.Point(12, 12);
+            this.propertyGridASK.Name = "propertyGridASK";
+            this.propertyGridASK.Size = new System.Drawing.Size(427, 426);
+            this.propertyGridASK.TabIndex = 0;
             // 
             // btnOK
             // 
@@ -53,6 +55,7 @@ namespace SwissArmyKnife
             this.btnOK.TabIndex = 1;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // FrmConfig
             // 
@@ -60,7 +63,7 @@ namespace SwissArmyKnife
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(450, 492);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.propertyGrid);
+            this.Controls.Add(this.propertyGridASK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -75,7 +78,7 @@ namespace SwissArmyKnife
 
         #endregion
 
-        private System.Windows.Forms.PropertyGrid propertyGrid;
+        private System.Windows.Forms.PropertyGrid propertyGridASK;
         private System.Windows.Forms.Button btnOK;
     }
 }
