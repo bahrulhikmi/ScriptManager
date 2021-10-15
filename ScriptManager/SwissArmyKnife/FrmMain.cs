@@ -30,7 +30,7 @@ namespace SwissArmyKnife
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized) this.Hide();
+            this.Hide();
         }
     }
 }

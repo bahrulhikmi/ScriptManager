@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Common.Interfaces;
 
-namespace SwissArmyKnife.Classes
+namespace Runner.Classes
 {
-    class ConfigItem : IConfigItem
+    public class ConfigItem : IConfigItem
     {
         public string ConfigKey { get; set; }
         public string Value { get; set; }

@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestReader", "TestReader\Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwissArmyKnife", "SwissArmyKnife\SwissArmyKnife.csproj", "{113D0D87-0DCD-463F-B65C-D7DCFC54327E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runner", "Runner\Runner.csproj", "{9663A7DF-D412-4D7F-8210-7E23591196CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{113D0D87-0DCD-463F-B65C-D7DCFC54327E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{113D0D87-0DCD-463F-B65C-D7DCFC54327E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{113D0D87-0DCD-463F-B65C-D7DCFC54327E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9663A7DF-D412-4D7F-8210-7E23591196CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9663A7DF-D412-4D7F-8210-7E23591196CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9663A7DF-D412-4D7F-8210-7E23591196CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9663A7DF-D412-4D7F-8210-7E23591196CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

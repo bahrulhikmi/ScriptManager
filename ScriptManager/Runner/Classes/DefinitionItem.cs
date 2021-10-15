@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Common.Interfaces;
 
-namespace SwissArmyKnife.Classes
+namespace Runner.Classes
 {
-    class DefinitionItem : IDefinitionItem
+    public class DefinitionItem : IDefinitionItem
     {
         public string Name { get; set; }
         public string IconPath { get; set; }
