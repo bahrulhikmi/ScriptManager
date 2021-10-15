@@ -15,19 +15,23 @@ namespace Runner.Classes
             var result = new RunnerResult();
 
             ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.CreateNoWindow = false;
+            startInfo.FileName = @"powershell.exe";
+            startInfo.Arguments = $"-NoProfile {definitionItem.Path}\\{definitionItem.ScriptFileName}";
+            startInfo.RedirectStandardOutput = true;
+            startInfo.RedirectStandardError = true;
             startInfo.UseShellExecute = false;
-            startInfo.FileName = definitionItem.Path + '\\' + definitionItem.ScriptFileName;
-            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            startInfo.CreateNoWindow = false;
 
             try
             {
-                using (Process exeProcess = Process.Start(startInfo))
-                {
-                    exeProcess.WaitForExit();
-                }
+                Process process = new Process();
+                process.StartInfo = startInfo;
+                process.Start();
 
-                result.Success = true;
+                string output = process.StandardOutput.ReadToEnd();
+                string errors = process.StandardError.ReadToEnd();
+
+                result.Success = (errors.Length > 0);
             }
             catch
             {

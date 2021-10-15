@@ -32,5 +32,14 @@ namespace SwissArmyKnife
         {
             this.Hide();
         }
+
+        private void tesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //DefinitionItem defItem = new DefinitionItem();
+            //defItem.Path = @"D:\Workplace\HD14\SwissArmy\ScriptManager\Actions";
+            //defItem.ScriptFileName = "Test.exe";
+            //var runner = new ExeRunner();
+            //RunnerResult res = runner.Run(defItem, null);
+        }
     }
 }
