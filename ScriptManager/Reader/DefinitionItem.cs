@@ -23,13 +23,16 @@ namespace Reader
             {
                 Type myType = typeof(DefinitionItem);
                 PropertyInfo myPropInfo = myType.GetProperty(propertyName);
-                return myPropInfo.GetValue(this, null);
+                return (myPropInfo == null) ? null : myPropInfo.GetValue(this, null);
             }
             set
             {
                 Type myType = typeof(DefinitionItem);
                 PropertyInfo myPropInfo = myType.GetProperty(propertyName);
-                myPropInfo.SetValue(this, value, null);
+                if(myPropInfo != null)
+                {
+                    myPropInfo.SetValue(this, value, null);
+                }
             }
         }
     }

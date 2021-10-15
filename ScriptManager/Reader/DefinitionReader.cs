@@ -14,7 +14,7 @@ namespace Reader
     {
         public List<IDefinitionItem> Read()
         {
-            var files = Directory.GetFiles(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Plugins", "definition.xml", SearchOption.AllDirectories);
+            var files = Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Said-Plugins", "definition.xml", SearchOption.AllDirectories);
             var items = new List<IDefinitionItem>();
             foreach (var file in files)
             {
@@ -23,6 +23,7 @@ namespace Reader
                 XmlElement root = doc.DocumentElement;
                 XmlNodeList nodes = root.ChildNodes;
                 var item = new DefinitionItem();
+                item.Path = Path.GetDirectoryName(file);
                 foreach (XmlNode node in nodes)
                 {
                     item[node.Name] = node.InnerText;

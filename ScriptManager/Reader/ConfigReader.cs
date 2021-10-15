@@ -11,9 +11,8 @@ namespace Reader
     {
         public List<IConfigItem> Read()
         {
-
             XmlDocument doc = new XmlDocument();
-            doc.Load(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)+ "\\System\\config.xml");
+            doc.Load(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)+ "\\config.xml");
             XmlElement root = doc.DocumentElement;
             XmlNodeList nodes = root.ChildNodes;
             var items = new List<IConfigItem>();
