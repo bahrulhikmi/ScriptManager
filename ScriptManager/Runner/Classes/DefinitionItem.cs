@@ -7,7 +7,7 @@ using Common.Interfaces;
 
 namespace SwissArmyKnife.Classes
 {
-    class DefinitionItem : IDefinitionItem
+    public class DefinitionItem : IDefinitionItem
     {
         public string Name { get; set; }
         public string IconPath { get; set; }
