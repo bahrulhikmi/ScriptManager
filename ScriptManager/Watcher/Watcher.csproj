@@ -45,7 +45,6 @@
     <Compile Include="LogFileWatcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SystemFileWatcher.cs" />
-    <Compile Include="SystemFileWatcherBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
