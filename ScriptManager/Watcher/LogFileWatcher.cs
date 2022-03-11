@@ -16,7 +16,7 @@ namespace Watcher
         }
         public override void OnChanged(object source, FileSystemEventArgs e)
         {
-            LogFileChangedEventArgs eventArgs = new LogFileChangedEventArgs();
+            LogFileChangedEventArgs eventArgs = new LogFileChangedEventArgs();            
             eventArgs.Message = getLastLine(e.FullPath);
             LogFileChanged(source, eventArgs);
         }
@@ -50,12 +50,13 @@ namespace Watcher
                     Console.WriteLine("Unable to open log file", ex);
                     System.Threading.Thread.Sleep(1000);
                 }
+            }
 
-                if (!string.IsNullOrWhiteSpace(lines))
-                {
-                    string lastLine = System.Text.RegularExpressions.Regex.Split(lines, "\r\n")?.Last();
-                    return lastLine;
-                }
+
+            if (!string.IsNullOrWhiteSpace(lines))
+            {
+                string lastLine = System.Text.RegularExpressions.Regex.Split(lines, "\r\n")?.Last();
+                return lastLine;
             }
 
             return null;
