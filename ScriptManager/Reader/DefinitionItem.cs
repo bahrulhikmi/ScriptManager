@@ -16,6 +16,7 @@ namespace Reader
         public string Category { get; set; }
         public string Path { get; set; }
         public string ScriptFileName { get; set; }
+        public string LogFileName { get; set; }
 
         public object this[string propertyName]
         {

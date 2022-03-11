@@ -27,29 +27,35 @@ namespace Runner.Classes
             processInfo.RedirectStandardError = true;
             processInfo.RedirectStandardOutput = true;
 
-            var process = Process.Start(processInfo);
-
-            process.BeginOutputReadLine();
-
-            process.ErrorDataReceived += (object sender, DataReceivedEventArgs e) =>
+            try
             {
-                if (!string.IsNullOrEmpty(e.Data))
+                var process = Process.Start(processInfo);
+
+                process.BeginOutputReadLine();
+
+                process.ErrorDataReceived += (object sender, DataReceivedEventArgs e) =>
                 {
-                    message += e.Data;
-                    errorCount += 1;
-                }
-            };
+                    if (!string.IsNullOrEmpty(e.Data))
+                    {
+                        message += e.Data;
+                        errorCount += 1;
+                    }
+                };
 
-            process.BeginErrorReadLine();
+                process.BeginErrorReadLine();
 
-            process.WaitForExit();
+                process.WaitForExit();
 
-            process.Close();
+                process.Close();
 
-            result.Success = errorCount == 0;
-
-            //Log message
-            //message
+                result.Success = errorCount == 0;
+                //Log message
+            }
+            catch
+            {
+                //Log message
+                result.Success = false;
+            }
 
             return result;
         }

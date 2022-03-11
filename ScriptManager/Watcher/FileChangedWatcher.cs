@@ -18,8 +18,8 @@ namespace Watcher
                                     | NotifyFilters.FileName | NotifyFilters.DirectoryName;
             watcher.Filter = filter;
 
-            watcher.Changed += new FileSystemEventHandler(OnChanged);
-            watcher.Error += new ErrorEventHandler(OnError);
+            watcher.Changed += new FileSystemEventHandler(InternalOnChanged);
+            watcher.Error += new ErrorEventHandler(InternalOnError);
         }
 
         public virtual void Start()
@@ -31,7 +31,29 @@ namespace Watcher
         {
             watcher.EnableRaisingEvents = false;
         }
+
+
+        Dictionary<string, DateTime> lastReads = new Dictionary<string, DateTime>();
+        /// <summary>
+        /// Handle the on changed internally before raising an event (e.g useful for logging)
+        /// </summary>
+        private void InternalOnChanged(object source, FileSystemEventArgs e)
+        {
+            DateTime lastWriteTime = File.GetLastWriteTime(e.FullPath);
+            if (lastReads.ContainsKey(e.FullPath) && lastReads[e.FullPath] == lastWriteTime) return;
+
+            lastReads[e.FullPath] = lastWriteTime;
+            OnChanged(source, e);
+        }
         public abstract void OnChanged(object source, FileSystemEventArgs e);
+
+        /// <summary>
+        /// Handle the on changed internally before raising an event (e.g useful for logging)
+        /// </summary>
+        private void InternalOnError(object source, ErrorEventArgs e)
+        {
+            OnError(source, e);
+        }
 
         private void OnError(object sender, ErrorEventArgs e)
         {
