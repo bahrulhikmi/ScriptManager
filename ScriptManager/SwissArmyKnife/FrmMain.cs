@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using Common.Interfaces;
+using Serilog;
 
 namespace SwissArmyKnife
 {
@@ -35,8 +37,12 @@ namespace SwissArmyKnife
         private void FrmMain_Load(object sender, EventArgs e)
         {
             this.Hide();
-            LoadConfig();
+            //LoadConfig();
             LoadDefinitionsAndPopulateUI();
+
+
+            // delete this when ready
+            tesToolStripMenuItem.Visible = false;
         }
 
 
@@ -47,18 +53,41 @@ namespace SwissArmyKnife
 
         void LoadDefinitionsAndPopulateUI()
         {
-            var definitions = definitionReader.Read();
-            cmsSwissArmyKnife.Items.Clear();
-            cmsSwissArmyKnife.Items.Add(configToolStripMenuItem);
-            cmsSwissArmyKnife.Items.Add(exitToolStripMenuItem);
-
-            foreach(var definition in definitions)
+            try
             {
-                var item = new ToolStripMenuItem();
-                item.Text = definition.Name;
-                cmsSwissArmyKnife.Items.Add(item);
-            }
+                var definitions = definitionReader.Read();
 
+                foreach (var definition in definitions)
+                {
+                    var item = new ToolStripMenuItem();
+                    item.Text = definition.Name;
+
+                    if (definition.IconPath != null && definition.IconPath.Length > 0)
+                        item.Image = Image.FromFile(definition.IconPath);
+
+                    item.Click += new EventHandler(RunScript);
+                    cmsSwissArmyKnife.Items.Insert(0, item);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Cannot Load Definition");
+                throw;
+            }
+        }
+
+        void RunScript(object sender, EventArgs e)
+        {
+            try
+            {
+                MessageBox.Show("Running the script...", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Failed to run the script. Please ask Said!");
+                throw;
+            }
         }
    
         private void tesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -68,6 +97,11 @@ namespace SwissArmyKnife
             //defItem.ScriptFileName = "Test.exe";
             //var runner = new ExeRunner();
             //RunnerResult res = runner.Run(defItem, null);
+        }
+
+        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Log.Information("Application Stop");
         }
     }
 }
