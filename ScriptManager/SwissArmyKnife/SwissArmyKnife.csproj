@@ -104,6 +104,10 @@
       <Project>{9663a7df-d412-4d7f-8210-7e23591196cf}</Project>
       <Name>Runner</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Watcher\Watcher.csproj">
+      <Project>{719a37a8-2297-40ba-b1a7-dd9879432fd7}</Project>
+      <Name>Watcher</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

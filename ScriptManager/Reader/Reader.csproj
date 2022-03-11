@@ -45,13 +45,15 @@
     <Compile Include="ConfigReader.cs" />
     <Compile Include="DefinitionItem.cs" />
     <Compile Include="DefinitionReader.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{100a9292-7845-46d3-b0d9-c64fb405ff7f}</Project>
       <Name>Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
