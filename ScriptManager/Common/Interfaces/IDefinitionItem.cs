@@ -8,5 +8,6 @@
         string Category { get; set; }
         string Path { get; set; }
         string ScriptFileName { get; set; }
+        string LogFileName { get; set; }
     }
 }

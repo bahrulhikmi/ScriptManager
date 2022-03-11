@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reader", "Reader\Reader.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runner", "Runner\Runner.csproj", "{9663A7DF-D412-4D7F-8210-7E23591196CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingMamat", "TestingMamat\TestingMamat.csproj", "{35C80CCE-A435-4612-9699-5DA0AF345083}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{9663A7DF-D412-4D7F-8210-7E23591196CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9663A7DF-D412-4D7F-8210-7E23591196CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9663A7DF-D412-4D7F-8210-7E23591196CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35C80CCE-A435-4612-9699-5DA0AF345083}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35C80CCE-A435-4612-9699-5DA0AF345083}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35C80CCE-A435-4612-9699-5DA0AF345083}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35C80CCE-A435-4612-9699-5DA0AF345083}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
