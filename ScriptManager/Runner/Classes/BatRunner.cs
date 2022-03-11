@@ -2,19 +2,43 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using Serilog;
+using System;
 
 namespace Runner.Classes
 {
     public class BatRunner
     {
-        public IRunnerResult Run(IDefinitionItem definitionItem, List<IConfigItem> configItems)
+        protected IDefinitionItem DefinitionItem { get; set; }
+        protected List<IConfigItem> ConfigItems { get; set; }
+
+        public BatRunner(IDefinitionItem definitionItem, List<IConfigItem> configItems)
         {
-            var result = new RunnerResult();
+            this.DefinitionItem = definitionItem;
+            this.ConfigItems = configItems;
+
+            Log.Logger = new LoggerConfiguration()
+                            .MinimumLevel.Debug()
+                            .WriteTo.File(Path.Combine(definitionItem.Path, definitionItem.LogFileName ?? "script_" + DateTime.Now.ToString("yyyyMMdd") + ".log"))
+                            .CreateLogger();
+        }
+
+        public IRunnerResult Run()
+        {
+            var result = new RunnerResult() { Success = true };
+            var scriptFileName = Path.Combine(DefinitionItem.Path, DefinitionItem.ScriptFileName);
             int errorCount = 0;
-            var filePath = Path.Combine(definitionItem.Path, definitionItem.ScriptFileName);
             var message = "";
 
-            var processInfo = new ProcessStartInfo("cmd.exe", "/c " + filePath);
+            if (!File.Exists(scriptFileName))
+            {
+                Log.Error($"Script {scriptFileName} file not found.");
+                result.Success = false;
+
+                return result;
+            }
+
+            var processInfo = new ProcessStartInfo("cmd.exe", "/c " + scriptFileName);
             processInfo.CreateNoWindow = true;
             processInfo.UseShellExecute = false;
             processInfo.RedirectStandardError = true;
@@ -36,18 +60,19 @@ namespace Runner.Classes
                 };
 
                 process.BeginErrorReadLine();
-
                 process.WaitForExit();
-
                 process.Close();
 
                 result.Success = errorCount == 0;
-                //Log message
+                if (errorCount > 0)
+                {
+                    Log.Error(message);
+                }
             }
-            catch
+            catch(Exception ex)
             {
-                //Log message
                 result.Success = false;
+                Log.Error(ex.Message);
             }
 
 

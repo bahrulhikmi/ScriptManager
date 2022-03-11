@@ -1,4 +1,5 @@
 ﻿using Common.Interfaces;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,12 +9,34 @@ namespace Runner.Classes
 {
     public class PythonRunner
     {
-        public IRunnerResult Run(IDefinitionItem definitionItem, List<IConfigItem> configItems)
+        protected IDefinitionItem DefinitionItem { get; set; }
+        protected List<IConfigItem> ConfigItems { get; set; }
+
+        public PythonRunner(IDefinitionItem definitionItem, List<IConfigItem> configItems)
         {
-            var result = new RunnerResult();
+            this.DefinitionItem = definitionItem;
+            this.ConfigItems = configItems;
+
+            Log.Logger = new LoggerConfiguration()
+                            .MinimumLevel.Debug()
+                            .WriteTo.File(Path.Combine(definitionItem.Path, definitionItem.LogFileName ?? "script_" + DateTime.Now.ToString("yyyyMMdd") + ".log"))
+                            .CreateLogger();
+        }
+
+        public IRunnerResult Run()
+        {
+            var result = new RunnerResult() { Success = true };
+            var scriptFileName = Path.Combine(DefinitionItem.Path, DefinitionItem.ScriptFileName);
             int errorCount = 0;
-            var filePath = Path.Combine(definitionItem.Path, definitionItem.ScriptFileName);
             var message = "";
+
+            if (!File.Exists(scriptFileName))
+            {
+                Log.Error($"Script {scriptFileName} file not found.");
+                result.Success = false;
+
+                return result;
+            }
 
             //Check if Python is isntalled
             if (string.IsNullOrEmpty(PythonCheck()))
@@ -21,7 +44,7 @@ namespace Runner.Classes
                 return result;
             }
 
-            var processInfo = new ProcessStartInfo("py", filePath);
+            var processInfo = new ProcessStartInfo("py", scriptFileName);
             processInfo.CreateNoWindow = true;
             processInfo.UseShellExecute = false;
             processInfo.RedirectStandardError = true;
@@ -43,18 +66,19 @@ namespace Runner.Classes
                 };
 
                 process.BeginErrorReadLine();
-
                 process.WaitForExit();
-
                 process.Close();
 
                 result.Success = errorCount == 0;
-                //Log message
+                if (errorCount > 0)
+                {
+                    Log.Error(message);
+                }
             }
-            catch
+            catch (Exception ex)
             {
-                //Log message
                 result.Success = false;
+                Log.Error(ex.Message);
             }
 
             return result;
@@ -85,11 +109,9 @@ namespace Runner.Classes
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //Log message
-                //message
-
+                Log.Error(ex.Message);
                 return result;
             }
         }
