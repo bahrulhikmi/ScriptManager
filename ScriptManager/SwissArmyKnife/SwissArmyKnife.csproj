@@ -96,6 +96,10 @@
       <Project>{100a9292-7845-46d3-b0d9-c64fb405ff7f}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Reader\Reader.csproj">
+      <Project>{ec06882d-1c28-4d7b-a14b-bd91616cdcdb}</Project>
+      <Name>Reader</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Runner\Runner.csproj">
       <Project>{9663a7df-d412-4d7f-8210-7e23591196cf}</Project>
       <Name>Runner</Name>

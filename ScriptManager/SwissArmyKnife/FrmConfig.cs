@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Reader;
 
 namespace SwissArmyKnife
 {
@@ -45,12 +46,32 @@ namespace SwissArmyKnife
 
         private void LoadConfiguration()
         {
-           
+            ConfigReader configReader = new ConfigReader();
+            var configs = configReader.Read();
+            DataGridViewRow row;
+            foreach (var config in configs)
+            {
+                row = new DataGridViewRow();
+                row.CreateCells(dataGridView1);
+                row.Cells[0].Value = config.ConfigKey;
+                row.Cells[1].Value = config.Value;
+                dataGridView1.Rows.Add(row);
+            }
         }
 
         private bool SaveConfiguration()
         {
             return false;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void propertyGridASK_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

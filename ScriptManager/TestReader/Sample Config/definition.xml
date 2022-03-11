@@ -1,0 +1,7 @@
+<definition>
+<Name>plugin</Name>
+<IconPath>plugin icon</IconPath>
+<Label>plugin label</Label>
+<Category>plugin category</Category>
+<ScriptFileName>plugin scriptname</ScriptFileName>
+</definition>
